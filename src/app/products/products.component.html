@@ -1,0 +1,19 @@
+
+<table class="w-1/2 mx-auto mt-24 border-2  border-separate border-spacing-2">
+    <thead >
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="odd:bg-white even:bg-purple-100 text-left pl-4 border-1 border-cyan-300"  *ngFor="let produit of products">
+            <td class="px-4 py-4">{{produit.id}}</td>
+            <td class="px-4 py-4">{{produit.name}}</td>
+            <td class="px-4 py-4">{{produit.price}} €</td>
+            <td class="text-center"><button class="ml-2 rounded-md bg-red-700 text-white px-2 py-2" (click)="handleDeleteProduit(produit)">Delete</button><button class="rounded-md ml-2 bg-cyan-700 text-white px-2 py-2">Update</button></td>
+        </tr>
+    </tbody>
+</table>
