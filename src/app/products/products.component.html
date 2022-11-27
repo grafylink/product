@@ -1,5 +1,10 @@
+<ng-template #errors>
+<div class="text-red-800">Une erreur s'est produite : {{errorMessage}}</div>
+</ng-template>
+<div >
 
-<table class="w-1/2 mx-auto mt-24 border-2  border-separate border-spacing-2">
+</div>
+<table  class="w-1/2 mx-auto mt-24 border-2  border-separate border-spacing-2" *ngIf="products; else errors">
     <thead >
         <tr>
             <th>Id</th>

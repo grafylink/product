@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
+import { Product } from '../model/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private products! : Array<any>;
+  private products! : Array<Product>;
   constructor() { 
     this.products = 
     [
@@ -15,9 +17,17 @@ export class ProductService {
     ];
     }
 
-    public getAllProducts(){
-      return this.products;
+    public getAllProducts() : Observable<Array<Product>>{
+      let rnd = Math.random();
+      if(rnd<0.1) return throwError(()=>new Error('Internet connexion erreur'));
+      else return of(this.products);
     }
+
+    public DeleteProduit(id:number) : Observable<boolean>{
+      this.products = this.products.filter(produit=>produit.id != id);
+      return of(true);
+    }
+
   }
 
 
